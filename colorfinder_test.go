@@ -25,7 +25,7 @@ func TestFind(t *testing.T) {
 	m := image.NewRGBA(bound)
 	draw.Draw(m, bound, img, bound.Min, draw.Src)
 
-	colors := find(m)
+	colors := Find(m)
 	fmt.Println(colors)
 	if colors == (color.RGBA{}) {
 		t.Error("No colors returned")

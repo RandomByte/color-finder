@@ -2,7 +2,6 @@ package colorfinder
 
 import (
 	"bytes"
-	"fmt"
 	"image"
 	"image/color"
 	"math"
@@ -14,7 +13,7 @@ type PixelData struct {
 	R, G, B, Count, Weight, Degrade int
 }
 
-func find(img *image.RGBA) color.RGBA {
+func Find(img *image.RGBA) color.RGBA {
 
 	pixels := getImageData(img)
 
@@ -50,7 +49,6 @@ func getImageData(img *image.RGBA) map[string]PixelData {
 			buffer.WriteString(strconv.Itoa(int(img.Pix[i+2])))
 
 			key := buffer.String()
-			fmt.Println(key)
 
 			pixel, ok := pixels[key]
 			if ok {
@@ -93,7 +91,6 @@ func getMostProminentRGBImpl(pixels map[string]PixelData, degrade uint, rgbMatch
 			buffer.WriteString(strconv.Itoa(pixel.B >> degrade))
 
 			pixelGroupKey := buffer.String()
-			fmt.Println(pixelGroupKey)
 
 			group, ok := db[pixelGroupKey]
 			if ok {
